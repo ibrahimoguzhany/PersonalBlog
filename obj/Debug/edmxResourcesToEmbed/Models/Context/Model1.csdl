@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NTierBlogDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Editorler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kullanici_Ismi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Yaratma_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modifiye_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Silme_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Veri_Durumu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Makalelers" Relationship="Self.FK_dbo_Makaleler_dbo_Editorler_EditorID" FromRole="Editorler" ToRole="Makaleler" />
+  </EntityType>
+  <EntityType Name="Etiketler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Etiket_ismi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Yaratma_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modifiye_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Silme_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Veri_Durumu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Makale_Etiketleri" Relationship="Self.FK_dbo_Makale_Etiketleri_dbo_Etiketler_TagID" FromRole="Etiketler" ToRole="Makale_Etiketleri" />
+  </EntityType>
+  <EntityType Name="Kategoriler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kategori_ismi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Yaratma_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modifiye_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Silme_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Veri_Durumu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Makalelers" Relationship="Self.FK_dbo_Makaleler_dbo_Kategoriler_CategoryID" FromRole="Kategoriler" ToRole="Makaleler" />
+  </EntityType>
+  <EntityType Name="Kullanici_Profiller">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Isim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Soyisim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Yaratma_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modifiye_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Silme_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Veri_Durumu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_dbo_Kullanici_Profiller_dbo_Kullanicilar_ID" FromRole="Kullanici_Profiller" ToRole="Kullanicilar" />
+  </EntityType>
+  <EntityType Name="Kullanicilar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role" Type="Int32" Nullable="false" />
+    <Property Name="Kullanici_Ismi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Yaratma_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modifiye_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Silme_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Veri_Durumu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kullanici_Profiller" Relationship="Self.FK_dbo_Kullanici_Profiller_dbo_Kullanicilar_ID" FromRole="Kullanicilar" ToRole="Kullanici_Profiller" />
+    <NavigationProperty Name="Makalelers" Relationship="Self.FK_dbo_Makaleler_dbo_Kullanicilar_AppUserID" FromRole="Kullanicilar" ToRole="Makaleler" />
+  </EntityType>
+  <EntityType Name="Makale_Etiketleri">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="ArticleID" Type="Int32" Nullable="false" />
+    <Property Name="TagID" Type="Int32" Nullable="false" />
+    <Property Name="Yaratma_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modifiye_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Silme_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Veri_Durumu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Etiketler" Relationship="Self.FK_dbo_Makale_Etiketleri_dbo_Etiketler_TagID" FromRole="Makale_Etiketleri" ToRole="Etiketler" />
+    <NavigationProperty Name="Makaleler" Relationship="Self.FK_dbo_Makale_Etiketleri_dbo_Makaleler_ArticleID" FromRole="Makale_Etiketleri" ToRole="Makaleler" />
+  </EntityType>
+  <EntityType Name="Makaleler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Baslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AppUserID" Type="Int32" Nullable="false" />
+    <Property Name="EditorID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Yaratma_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modifiye_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Silme_Tarihi" Type="DateTime" Precision="3" />
+    <Property Name="Veri_Durumu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Editorler" Relationship="Self.FK_dbo_Makaleler_dbo_Editorler_EditorID" FromRole="Makaleler" ToRole="Editorler" />
+    <NavigationProperty Name="Kategoriler" Relationship="Self.FK_dbo_Makaleler_dbo_Kategoriler_CategoryID" FromRole="Makaleler" ToRole="Kategoriler" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_dbo_Makaleler_dbo_Kullanicilar_AppUserID" FromRole="Makaleler" ToRole="Kullanicilar" />
+    <NavigationProperty Name="Makale_Etiketleri" Relationship="Self.FK_dbo_Makale_Etiketleri_dbo_Makaleler_ArticleID" FromRole="Makaleler" ToRole="Makale_Etiketleri" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dbo_Makaleler_dbo_Editorler_EditorID">
+    <End Role="Editorler" Type="Self.Editorler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makaleler" Type="Self.Makaleler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Editorler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makaleler">
+        <PropertyRef Name="EditorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Makale_Etiketleri_dbo_Etiketler_TagID">
+    <End Role="Etiketler" Type="Self.Etiketler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makale_Etiketleri" Type="Self.Makale_Etiketleri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etiketler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makale_Etiketleri">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Makaleler_dbo_Kategoriler_CategoryID">
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makaleler" Type="Self.Makaleler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makaleler">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Kullanici_Profiller_dbo_Kullanicilar_ID">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+    <End Role="Kullanici_Profiller" Type="Self.Kullanici_Profiller" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Kullanici_Profiller">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Makaleler_dbo_Kullanicilar_AppUserID">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makaleler" Type="Self.Makaleler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makaleler">
+        <PropertyRef Name="AppUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Makale_Etiketleri_dbo_Makaleler_ArticleID">
+    <End Role="Makaleler" Type="Self.Makaleler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makale_Etiketleri" Type="Self.Makale_Etiketleri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Makaleler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makale_Etiketleri">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NTierBlogDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="Editorlers" EntityType="Self.Editorler" />
+    <EntitySet Name="Etiketlers" EntityType="Self.Etiketler" />
+    <EntitySet Name="Kategorilers" EntityType="Self.Kategoriler" />
+    <EntitySet Name="Kullanici_Profillers" EntityType="Self.Kullanici_Profiller" />
+    <EntitySet Name="Kullanicilars" EntityType="Self.Kullanicilar" />
+    <EntitySet Name="Makale_Etiketleris" EntityType="Self.Makale_Etiketleri" />
+    <EntitySet Name="Makalelers" EntityType="Self.Makaleler" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_dbo_Makaleler_dbo_Editorler_EditorID" Association="Self.FK_dbo_Makaleler_dbo_Editorler_EditorID">
+      <End Role="Editorler" EntitySet="Editorlers" />
+      <End Role="Makaleler" EntitySet="Makalelers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Makale_Etiketleri_dbo_Etiketler_TagID" Association="Self.FK_dbo_Makale_Etiketleri_dbo_Etiketler_TagID">
+      <End Role="Etiketler" EntitySet="Etiketlers" />
+      <End Role="Makale_Etiketleri" EntitySet="Makale_Etiketleris" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Makaleler_dbo_Kategoriler_CategoryID" Association="Self.FK_dbo_Makaleler_dbo_Kategoriler_CategoryID">
+      <End Role="Kategoriler" EntitySet="Kategorilers" />
+      <End Role="Makaleler" EntitySet="Makalelers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Kullanici_Profiller_dbo_Kullanicilar_ID" Association="Self.FK_dbo_Kullanici_Profiller_dbo_Kullanicilar_ID">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Kullanici_Profiller" EntitySet="Kullanici_Profillers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Makaleler_dbo_Kullanicilar_AppUserID" Association="Self.FK_dbo_Makaleler_dbo_Kullanicilar_AppUserID">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Makaleler" EntitySet="Makalelers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Makale_Etiketleri_dbo_Makaleler_ArticleID" Association="Self.FK_dbo_Makale_Etiketleri_dbo_Makaleler_ArticleID">
+      <End Role="Makaleler" EntitySet="Makalelers" />
+      <End Role="Makale_Etiketleri" EntitySet="Makale_Etiketleris" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

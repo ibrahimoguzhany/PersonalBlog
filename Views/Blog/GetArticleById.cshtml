@@ -1,0 +1,91 @@
+﻿@model ArticleVM
+@{
+    ViewBag.Title = "GetArticleById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetArticleById</h2>
+
+<div class="col-md-8">
+    <!-- Title -->
+    <h1>@Model.Article.Heading</h1>
+    <!-- Author -->
+
+  
+    <!-- Post Content -->
+    <p class="lead">
+        @Html.Raw(Model.Article.Text)
+    </p>
+  
+
+    @if (Session["uyeid"] != null)
+    {
+        <div class="well">
+            <h4>Yorum</h4>
+            <form role="form">
+                <div class="form-group">
+                    <textarea id="yorum" typeof="text" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" id="gonder" class="btn btn-primary">Yorum Yap</button>
+            </form>
+        </div>
+    }
+    else
+    {
+        <h2>Makaleye yorum yapmak için kullanıcı girişi yapmalısınız</h2>
+        <p><a href="/Uye/Login/">Giriş Yap</a></p>
+    }
+
+    <div class="media">
+        @foreach (Comment item in Model.Comments)
+        {
+            <div class="well">              
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        @item.User.UserName
+                        <small>@item.CreatedDate</small>
+                    </h4>
+                    @item.Text - @if (Convert.ToInt32(Session["uyeid"]) == item.ID)
+                    {
+                        <a class="btn btn-danger" href="/Home/YorumSil/@item.ID">Sil</a>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+<script src="~/Content/js/jquery.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="~/Content/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("#gonder").click(function () {
+            var yorumunuz = $("#yorum").val();
+            $.ajax({
+                url: '/Home/YorumYap/',
+                data: {yorum:yorumunuz, Makaleid:@Model.Article.ID},
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    alert("Başarılı "+ yorumunuz);}
+                });
+        });
+    })
+
+
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            url: '/Home/OkunmaArttir/',
+            data: { Makaleid: @Model.Article.ID},
+            type: 'POST',
+        });
+    })
+</script>  

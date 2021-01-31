@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NTierBlogDBModelStoreContainer" CdmEntityContainer="NTierBlogDBEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="NTierBlogDBModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Editorlers">
+      <EntityTypeMapping TypeName="NTierBlogDBModel.Editorler">
+        <MappingFragment StoreEntitySet="Editorler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Kullanici_Ismi" ColumnName="Kullanici Ismi" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Yaratma_Tarihi" ColumnName="Yaratma Tarihi" />
+          <ScalarProperty Name="Modifiye_Tarihi" ColumnName="Modifiye Tarihi" />
+          <ScalarProperty Name="Silme_Tarihi" ColumnName="Silme Tarihi" />
+          <ScalarProperty Name="Veri_Durumu" ColumnName="Veri Durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Etiketlers">
+      <EntityTypeMapping TypeName="NTierBlogDBModel.Etiketler">
+        <MappingFragment StoreEntitySet="Etiketler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Etiket_ismi" ColumnName="Etiket ismi" />
+          <ScalarProperty Name="Yaratma_Tarihi" ColumnName="Yaratma Tarihi" />
+          <ScalarProperty Name="Modifiye_Tarihi" ColumnName="Modifiye Tarihi" />
+          <ScalarProperty Name="Silme_Tarihi" ColumnName="Silme Tarihi" />
+          <ScalarProperty Name="Veri_Durumu" ColumnName="Veri Durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategorilers">
+      <EntityTypeMapping TypeName="NTierBlogDBModel.Kategoriler">
+        <MappingFragment StoreEntitySet="Kategoriler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Kategori_ismi" ColumnName="Kategori ismi" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Yaratma_Tarihi" ColumnName="Yaratma Tarihi" />
+          <ScalarProperty Name="Modifiye_Tarihi" ColumnName="Modifiye Tarihi" />
+          <ScalarProperty Name="Silme_Tarihi" ColumnName="Silme Tarihi" />
+          <ScalarProperty Name="Veri_Durumu" ColumnName="Veri Durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanici_Profillers">
+      <EntityTypeMapping TypeName="NTierBlogDBModel.Kullanici_Profiller">
+        <MappingFragment StoreEntitySet="Kullanici Profiller">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Isim" ColumnName="Isim" />
+          <ScalarProperty Name="Soyisim" ColumnName="Soyisim" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Yaratma_Tarihi" ColumnName="Yaratma Tarihi" />
+          <ScalarProperty Name="Modifiye_Tarihi" ColumnName="Modifiye Tarihi" />
+          <ScalarProperty Name="Silme_Tarihi" ColumnName="Silme Tarihi" />
+          <ScalarProperty Name="Veri_Durumu" ColumnName="Veri Durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanicilars">
+      <EntityTypeMapping TypeName="NTierBlogDBModel.Kullanicilar">
+        <MappingFragment StoreEntitySet="Kullanicilar">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Kullanici_Ismi" ColumnName="Kullanici Ismi" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Yaratma_Tarihi" ColumnName="Yaratma Tarihi" />
+          <ScalarProperty Name="Modifiye_Tarihi" ColumnName="Modifiye Tarihi" />
+          <ScalarProperty Name="Silme_Tarihi" ColumnName="Silme Tarihi" />
+          <ScalarProperty Name="Veri_Durumu" ColumnName="Veri Durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Makale_Etiketleris">
+      <EntityTypeMapping TypeName="NTierBlogDBModel.Makale_Etiketleri">
+        <MappingFragment StoreEntitySet="Makale Etiketleri">
+          <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="Yaratma_Tarihi" ColumnName="Yaratma Tarihi" />
+          <ScalarProperty Name="Modifiye_Tarihi" ColumnName="Modifiye Tarihi" />
+          <ScalarProperty Name="Silme_Tarihi" ColumnName="Silme Tarihi" />
+          <ScalarProperty Name="Veri_Durumu" ColumnName="Veri Durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Makalelers">
+      <EntityTypeMapping TypeName="NTierBlogDBModel.Makaleler">
+        <MappingFragment StoreEntitySet="Makaleler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+          <ScalarProperty Name="Icerik" ColumnName="Icerik" />
+          <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
+          <ScalarProperty Name="EditorID" ColumnName="EditorID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Yaratma_Tarihi" ColumnName="Yaratma Tarihi" />
+          <ScalarProperty Name="Modifiye_Tarihi" ColumnName="Modifiye Tarihi" />
+          <ScalarProperty Name="Silme_Tarihi" ColumnName="Silme Tarihi" />
+          <ScalarProperty Name="Veri_Durumu" ColumnName="Veri Durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="NTierBlogDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

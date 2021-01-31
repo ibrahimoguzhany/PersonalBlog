@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NTierBlogDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Editorler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kullanici Ismi" Type="nvarchar(max)" />
+    <Property Name="Sifre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Yaratma Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Modifiye Tarihi" Type="datetime" />
+    <Property Name="Silme Tarihi" Type="datetime" />
+    <Property Name="Veri Durumu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Etiketler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Etiket ismi" Type="nvarchar(max)" />
+    <Property Name="Yaratma Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Modifiye Tarihi" Type="datetime" />
+    <Property Name="Silme Tarihi" Type="datetime" />
+    <Property Name="Veri Durumu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kategoriler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kategori ismi" Type="nvarchar(max)" />
+    <Property Name="Aciklama" Type="nvarchar(max)" />
+    <Property Name="Yaratma Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Modifiye Tarihi" Type="datetime" />
+    <Property Name="Silme Tarihi" Type="datetime" />
+    <Property Name="Veri Durumu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici Profiller">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Isim" Type="nvarchar(max)" />
+    <Property Name="Soyisim" Type="nvarchar(max)" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="Yaratma Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Modifiye Tarihi" Type="datetime" />
+    <Property Name="Silme Tarihi" Type="datetime" />
+    <Property Name="Veri Durumu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanicilar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role" Type="int" Nullable="false" />
+    <Property Name="Kullanici Ismi" Type="nvarchar(max)" />
+    <Property Name="Sifre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Yaratma Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Modifiye Tarihi" Type="datetime" />
+    <Property Name="Silme Tarihi" Type="datetime" />
+    <Property Name="Veri Durumu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Makale Etiketleri">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="ArticleID" Type="int" Nullable="false" />
+    <Property Name="TagID" Type="int" Nullable="false" />
+    <Property Name="Yaratma Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Modifiye Tarihi" Type="datetime" />
+    <Property Name="Silme Tarihi" Type="datetime" />
+    <Property Name="Veri Durumu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Makaleler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Baslik" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Icerik" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AppUserID" Type="int" Nullable="false" />
+    <Property Name="EditorID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Yaratma Tarihi" Type="datetime" Nullable="false" />
+    <Property Name="Modifiye Tarihi" Type="datetime" />
+    <Property Name="Silme Tarihi" Type="datetime" />
+    <Property Name="Veri Durumu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_dbo_Kullanici Profiller_dbo_Kullanicilar_ID">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+    <End Role="Kullanici Profiller" Type="Self.Kullanici Profiller" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Kullanici Profiller">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Makale Etiketleri_dbo_Etiketler_TagID">
+    <End Role="Etiketler" Type="Self.Etiketler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makale Etiketleri" Type="Self.Makale Etiketleri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etiketler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makale Etiketleri">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Makale Etiketleri_dbo_Makaleler_ArticleID">
+    <End Role="Makaleler" Type="Self.Makaleler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makale Etiketleri" Type="Self.Makale Etiketleri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Makaleler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makale Etiketleri">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Makaleler_dbo_Editorler_EditorID">
+    <End Role="Editorler" Type="Self.Editorler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makaleler" Type="Self.Makaleler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Editorler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makaleler">
+        <PropertyRef Name="EditorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Makaleler_dbo_Kategoriler_CategoryID">
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makaleler" Type="Self.Makaleler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makaleler">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Makaleler_dbo_Kullanicilar_AppUserID">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Makaleler" Type="Self.Makaleler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Makaleler">
+        <PropertyRef Name="AppUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NTierBlogDBModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Editorler" EntityType="Self.Editorler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Etiketler" EntityType="Self.Etiketler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici Profiller" EntityType="Self.Kullanici Profiller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Makale Etiketleri" EntityType="Self.Makale Etiketleri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Makaleler" EntityType="Self.Makaleler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_Kullanici Profiller_dbo_Kullanicilar_ID" Association="Self.FK_dbo_Kullanici Profiller_dbo_Kullanicilar_ID">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Kullanici Profiller" EntitySet="Kullanici Profiller" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Makale Etiketleri_dbo_Etiketler_TagID" Association="Self.FK_dbo_Makale Etiketleri_dbo_Etiketler_TagID">
+      <End Role="Etiketler" EntitySet="Etiketler" />
+      <End Role="Makale Etiketleri" EntitySet="Makale Etiketleri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Makale Etiketleri_dbo_Makaleler_ArticleID" Association="Self.FK_dbo_Makale Etiketleri_dbo_Makaleler_ArticleID">
+      <End Role="Makaleler" EntitySet="Makaleler" />
+      <End Role="Makale Etiketleri" EntitySet="Makale Etiketleri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Makaleler_dbo_Editorler_EditorID" Association="Self.FK_dbo_Makaleler_dbo_Editorler_EditorID">
+      <End Role="Editorler" EntitySet="Editorler" />
+      <End Role="Makaleler" EntitySet="Makaleler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Makaleler_dbo_Kategoriler_CategoryID" Association="Self.FK_dbo_Makaleler_dbo_Kategoriler_CategoryID">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="Makaleler" EntitySet="Makaleler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Makaleler_dbo_Kullanicilar_AppUserID" Association="Self.FK_dbo_Makaleler_dbo_Kullanicilar_AppUserID">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Makaleler" EntitySet="Makaleler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
